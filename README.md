@@ -1,11 +1,11 @@
-These instructions have been updated for Ubuntu 14.04 and TeX Live 2014, they will probably work on most Ubuntu/Debian distributions.
+These instructions have been updated for Ubuntu 20.04 LTS and TeX Live 2021, they will probably work on most Ubuntu/Debian distributions.
 
 Installation
 ============
 Installing "vanilla" TeX Live is not as hard as you think. Things you will need:
 
 * An internet connection.
-* About 4 GiB of free space (2 GiB if not installing documentation).
+* About 5 GiB of free space (3 GiB if not installing documentation).
 * Root (`sudo`) powers.
 
 Also: the instructions are meant for the terminal. If you're uncomfortable with that you can probably still install the `texlive-full` package from the Software center.
@@ -16,30 +16,30 @@ First the official installer needs to be downloaded with the following commands:
 
     wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
     tar -xzf install-tl-unx.tar.gz
-    cd install-tl-20140618
+    cd install-tl-20210131
     
-Note that the `install-tl-20140618` folder may be named differently. You can probably type `install-tl` and then press <kbd>tab</kbd> to autocomplete the folder name.
+Note that the `install-tl-20210131` folder may be named differently. You can probably type `install-tl` and then press <kbd>tab</kbd> to autocomplete the folder name.
 
 Now the installation can begin, run:
 
     sudo ./install-tl
     
-This will start the installer. You can change all kind of options here, most of the time the default options are correct. In some cases changing the options can, of course, be helpful. Not installing the *doc* and *source* trees will save you a lot (1.8 GiB, 50%) of disk space. This comes with the downside of having to look up documentation online, instead of locally.
+This will start the installer. You can change all kind of options here, most of the time the default options are correct. In some cases changing the options can, of course, be helpful. Not installing the *doc* and *source* trees will save you a lot (2.5 GiB, 50%) of disk space. This comes with the downside of having to look up documentation online, instead of locally.
 If you want to reduce disk space further you can also change the installation *scheme* or *collections*, but this will result in not having certain packages installed by default. You can, however, install them later through the TeX live manager.
 
 Press <kbd>i</kbd> to start installation. Depending on your internet connection this may take a long time.
 
 If, for some reason, the installation is interrupted it can probably be resumed by running the installer again. This will prompt you to continue the installation. If you want to start the installation from the beginning it's probably wise to remove the installed elements:
 
-    sudo rm -rf /usr/local/texlive/2014
+    sudo rm -rf /usr/local/texlive/20XX
 
 Finalising the installation
 ---------------------------
 If the installation completes successfully you will want to make sure your operating system can find it. This can be done by creating a *symbolic link*:
 
-    sudo ln -s /usr/local/texlive/2014/bin/* /opt/texbin
+    sudo ln -s /usr/local/texlive/20XX/bin/* /opt/texbin
     
-(Note: there should only be one subdirectory in `/usr/local/texlive/2014/bin`.)
+(Note: there should only be one subdirectory in `/usr/local/texlive/20XX/bin`.)
 
 Now you'll have to add `/opt/texbin` to your `$PATH` variable. This can be done by editing `/etc/environment`:
 
@@ -70,14 +70,14 @@ Now TeX Live works, but it's also necessary to make Ubuntu think you've installe
     mkdir /tmp/tl-equivs && cd /tmp/tl-equivs
     equivs-control texlive-local
 
-First you'll have to edit `texlive-local`. A good example for TeX Live 2014 can be found [here][10].
+First you'll have to edit `texlive-local`. A good example for TeX Live 2020 can be found [here] [4].
 
     gedit texlive-local
 
 Now you can build the package and install it:
 
     equivs-build texlive-local
-    sudo dpkg -i texlive-local_2014-1_all.deb
+    sudo dpkg -i texlive-local_2020-1_all.deb
 
 After this installing `texworks` through the package maintainer won't install TeX Live again.
 
@@ -127,11 +127,11 @@ Upgrading to the next TeX Live
 ==============================
 To upgrade you need to download and run the installer again. Afterwards you need to replace the symbolic link:
 
-    sudo ln -sf /usr/local/texlive/2014/bin/* /opt/texbin
+    sudo ln -sf /usr/local/texlive/2020/bin/* /opt/texbin
     
 It might also be a good idea to run the font section again. You can remove the old distribution by running:
 
-    sudo rm -rf /usr/local/texlive/2013
+    sudo rm -rf /usr/local/texlive/20XX
 
 Uninstalling TeX Live
 =====================
@@ -153,4 +153,4 @@ References and sources
   [1]: http://www.tug.org/texlive/debian.html#vanilla
   [2]: http://www.tug.org/texlive/quickinstall.html
   [3]: http://www.tug.org/TUGboat/tb32-1/tb100gregorio.pdf
-  [10]: http://www.tug.org/texlive/files/debian-equivs-2014-ex.txt
+  [4]: https://www.tug.org/texlive/files/debian-equivs-2020-ex.txt
