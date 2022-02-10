@@ -4,7 +4,7 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Latex Related work : I will be updating this with my latex work or my research interests (no promised though)">
+    <meta name="description" content="LaTeX Related work : I will be updating this with my LaTeX work or my LaTeX related research interests (no promises though)">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
@@ -31,7 +31,7 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <p>These instructions have been updated for Ubuntu 14.04 and TeX Live 2014, they will probably work on most Ubuntu/Debian distributions.</p>
+        <p>These instructions have been updated for Ubuntu 20.04 and TeX Live 2021, they will probably work on most Ubuntu/Debian distributions.</p>
 
 <h1>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
@@ -52,11 +52,11 @@
 <p>First the official installer needs to be downloaded with the following commands:</p>
 
 <pre><code>wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-tar -xzf install-tl-unx.tar.gz
-cd install-tl-20140618
+    tar -xzf install-tl-unx.tar.gz
+    cd install-tl-20210131
 </code></pre>
 
-<p>Note that the <code>install-tl-20140618</code> folder may be named differently. You can probably type <code>install-tl</code> and then press <kbd>tab</kbd> to autocomplete the folder name.</p>
+<p>Note that the <code>install-tl-20210131</code> folder may be named differently. You can probably type <code>install-tl</code> and then press <kbd>tab</kbd> to autocomplete the folder name.</p>
 
 <p>Now the installation can begin, run:</p>
 
@@ -78,10 +78,10 @@ If you want to reduce disk space further you can also change the installation <e
 
 <p>If the installation completes successfully you will want to make sure your operating system can find it. This can be done by creating a <em>symbolic link</em>:</p>
 
-<pre><code>sudo ln -s /usr/local/texlive/2014/bin/* /opt/texbin
+<pre><code>sudo ln -s /usr/local/texlive/2021/bin/* /opt/texbin
 </code></pre>
 
-<p>(Note: there should only be one subdirectory in <code>/usr/local/texlive/2014/bin</code>.)</p>
+<p>(Note: there should only be one subdirectory in <code>/usr/local/texlive/2021/bin</code>.)</p>
 
 <p>Now you'll have to add <code>/opt/texbin</code> to your <code>$PATH</code> variable. This can be done by editing <code>/etc/environment</code>:</p>
 
@@ -127,7 +127,7 @@ equivs-control texlive-local
 <p>Now you can build the package and install it:</p>
 
 <pre><code>equivs-build texlive-local
-sudo dpkg -i texlive-local_2014-1_all.deb
+sudo dpkg -i texlive-local_2021-1_all.deb
 </code></pre>
 
 <p>After this installing <code>texworks</code> through the package maintainer won't install TeX Live again.</p>
@@ -188,12 +188,12 @@ Icon=system-software-update
 
 <p>To upgrade you need to download and run the installer again. Afterwards you need to replace the symbolic link:</p>
 
-<pre><code>sudo ln -sf /usr/local/texlive/2014/bin/* /opt/texbin
+<pre><code>sudo ln -sf /usr/local/texlive/2021/bin/* /opt/texbin
 </code></pre>
 
 <p>It might also be a good idea to run the font section again. You can remove the old distribution by running:</p>
 
-<pre><code>sudo rm -rf /usr/local/texlive/2013
+<pre><code>sudo rm -rf /usr/local/texlive/2021
 </code></pre>
 
 <h1>
@@ -227,8 +227,5 @@ Icon=system-software-update
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-
-    
-
   </body>
 </html>
