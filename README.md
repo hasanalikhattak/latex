@@ -1,39 +1,41 @@
-These instructions have been updated for Ubuntu 20.04 LTS and TeX Live 2021, they will probably work on most Ubuntu/Debian distributions.
+# Ubuntu 24.04 LTS and TeX Live 2025
 
-Installation
+### These instructions have been updated for Ubuntu 24.04 LTS and TeX Live 2025, they will probably work on most Ubuntu/Debian distributions.
+
+## Installation
 ============
 Installing "vanilla" TeX Live is not as hard as you think. Things you will need:
 
 * An internet connection.
-* About 5 GiB of free space (3 GiB if not installing documentation).
+* About 7 GiB of free space (5 GiB if not installing documentation).
 * Root (`sudo`) powers.
 
 Also: the instructions are meant for the terminal. If you're uncomfortable with that you can probably still install the `texlive-full` package from the Software center.
 
-TeX Live Installer
+## TeX Live Installer
 ------------------
 First the official installer needs to be downloaded with the following commands:
 
     wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
     tar -xzf install-tl-unx.tar.gz
-    cd install-tl-20210131
+    cd install-tl-20250703
     
-Note that the `install-tl-20210131` folder may be named differently. You can probably type `install-tl` and then press <kbd>tab</kbd> to autocomplete the folder name.
+Note that the `install-tl-20250703` folder may be named differently. You can probably type `install-tl` and then press <kbd>tab</kbd> to autocomplete the folder name.
 
 Now the installation can begin, run:
 
     sudo ./install-tl
     
-This will start the installer. You can change all kind of options here, most of the time the default options are correct. In some cases changing the options can, of course, be helpful. Not installing the *doc* and *source* trees will save you a lot (2.5 GiB, 50%) of disk space. This comes with the downside of having to look up documentation online, instead of locally.
+This will start the installer. You can change all kind of options here, most of the time the default options are correct. In some cases, changing the options can, of course, be helpful. Not installing the *doc* and *source* trees will save you a lot (˜4 GiB, 50%) of disk space. This comes with the downside of having to look up documentation online, instead of locally.
 If you want to reduce disk space further you can also change the installation *scheme* or *collections*, but this will result in not having certain packages installed by default. You can, however, install them later through the TeX live manager.
 
-Press <kbd>i</kbd> to start installation. Depending on your internet connection this may take a long time.
+Press <kbd>i</kbd> to start installation. Depending on your internet connection, this may take a long time.
 
 If, for some reason, the installation is interrupted it can probably be resumed by running the installer again. This will prompt you to continue the installation. If you want to start the installation from the beginning it's probably wise to remove the installed elements:
 
     sudo rm -rf /usr/local/texlive/20XX
 
-Finalising the installation
+## Finalising the installation
 ---------------------------
 If the installation completes successfully you will want to make sure your operating system can find it. This can be done by creating a *symbolic link*:
 
@@ -62,7 +64,7 @@ This should show the following:
 
     /opt/texbin/tex
 
-Fake packages
+## Fake packages
 -------------
 Now TeX Live works, but it's also necessary to make Ubuntu think you've installed TeX Live. This can be done with the `equivs` package:
 
@@ -81,7 +83,7 @@ Now you can build the package and install it:
 
 After this installing `texworks` through the package maintainer won't install TeX Live again.
 
-Fonts
+ ## Fonts
 -----
 If you want to install all OpenType and TrueType fonts so you can use them in other programs as well, you'll have to add the TeX Live fonts to the system configuration:
 
@@ -92,7 +94,7 @@ Remove the line containing `type1` and save. Now run:
 
     sudo fc-cache -fsv
 
-Updating
+## Updating
 ========
 You can now update TeX Live though the TeX Live Manager by running:
 
@@ -102,7 +104,7 @@ It might complain about missing 'Tk', this can be solved by installing `perl-tk`
 
     sudo apt-get install perl-tk --no-install-recommends
 
-Launcher
+## Launcher
 --------
 You can also create a launcher for Unity:
 
@@ -123,7 +125,7 @@ Paste the following:
     
 Once again you'll need to logout and login again for the changes to take effect.
 
-Upgrading to the next TeX Live
+## Upgrading to the next TeX Live
 ==============================
 To upgrade you need to download and run the installer again. Afterwards you need to replace the symbolic link:
 
@@ -133,7 +135,7 @@ It might also be a good idea to run the font section again. You can remove the o
 
     sudo rm -rf /usr/local/texlive/20XX
 
-Uninstalling TeX Live
+## Uninstalling TeX Live
 =====================
 To remove TeX Live completely you need to undo everything you've done:
 
@@ -143,7 +145,7 @@ To remove TeX Live completely you need to undo everything you've done:
 * Remove `/usr/local/texlive`.
 * Remove the package created with `equivs` (`sudo apt-get purge texlive-local`).
 
-References and sources
+### References and sources
 ======================
 * [TeX Live Debian guide][1]
 * [TeX Live Quick install][2]
